@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hawking Bros — Разработка цифровых систем и сайтов для НКО</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Oswald:wght@500;700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed": "#1b1b1b",
+              "secondary": "#5e5e5e",
+              "tertiary": "#595958",
+              "on-primary-fixed": "#400014",
+              "surface-container-lowest": "#ffffff",
+              "background": "#f9f9f9",
+              "tertiary-fixed-dim": "#c8c6c6",
+              "on-error-container": "#93000a",
+              "primary-container": "#dc145c",
+              "on-surface": "#1a1c1c",
+              "on-secondary-container": "#646464",
+              "on-primary": "#ffffff",
+              "secondary-container": "#e2e2e2",
+              "outline": "#8f6f73",
+              "error-container": "#ffdad6",
+              "surface-tint": "#bc004c",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#e4e2e2",
+              "primary-fixed-dim": "#ffb2be",
+              "outline-variant": "#e4bdc2",
+              "secondary-fixed": "#e2e2e2",
+              "on-primary-fixed-variant": "#900038",
+              "on-tertiary-container": "#f9f6f6",
+              "surface-container-low": "#f3f3f3",
+              "on-surface-variant": "#5b3f44",
+              "inverse-surface": "#2f3131",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "on-tertiary-fixed": "#1b1c1c",
+              "surface-container": "#eeeeee",
+              "surface-dim": "#dadada",
+              "surface-variant": "#e2e2e2",
+              "primary": "#b20047",
+              "on-background": "#1a1c1c",
+              "primary-fixed": "#ffd9de",
+              "on-secondary-fixed-variant": "#474747",
+              "inverse-primary": "#ffb2be",
+              "tertiary-container": "#717171",
+              "surface-container-highest": "#e2e2e2",
+              "surface": "#f9f9f9",
+              "surface-container-high": "#e8e8e8",
+              "on-tertiary-fixed-variant": "#474747",
+              "secondary-fixed-dim": "#c6c6c6",
+              "inverse-on-surface": "#f1f1f1",
+              "on-tertiary": "#ffffff",
+              "on-primary-container": "#fff4f4",
+              "surface-bright": "#f9f9f9"
+            },
+            fontFamily: {
+              "headline": ["Oswald", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Roboto Mono", "monospace"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body.menu-open {
+        overflow: hidden;
+      }
+      .anchor-section {
+        scroll-margin-top: 88px;
+      }
+      .logo-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        width: 200px;
+        height: 200px;
+      }
+      .logo-pixel {
+        background-color: #eeeeee;
+        width: 100%;
+        height: 100%;
+        transition: background-color 0.3s ease;
+      }
+      .logo-pixel.active {
+        background-color: #DC145C;
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.6; }
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#f9f9f9] dark:bg-slate-950">
+<div class="flex justify-between items-center h-16 px-8 md:px-12 max-w-full mx-auto">
+<div class="font-['Oswald'] text-xl font-bold tracking-tighter text-[#1a1c1c] dark:text-slate-100">
+                Hawking Bros
+            </div>
+<div class="hidden md:flex items-center gap-10">
+<a class="font-['Inter'] uppercase tracking-widest text-[0.6875rem] font-medium text-[#1a1c1c] dark:text-slate-400 hover:text-[#dc145c] transition-colors" href="#services">Услуги</a>
+<a class="font-['Inter'] uppercase tracking-widest text-[0.6875rem] font-medium text-[#1a1c1c] dark:text-slate-400 hover:text-[#dc145c] transition-colors" href="#cases">Кейсы</a>
+<a class="font-['Inter'] uppercase tracking-widest text-[0.6875rem] font-medium text-[#1a1c1c] dark:text-slate-400 hover:text-[#dc145c] transition-colors" href="#stack">Стек</a>
+<a class="font-['Inter'] uppercase tracking-widest text-[0.6875rem] font-medium text-[#1a1c1c] dark:text-slate-400 hover:text-[#dc145c] transition-colors" href="#contacts">Контакты</a>
+</div>
+<div class="md:hidden">
+<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Открыть меню" class="text-[#1a1c1c] inline-flex items-center justify-center" id="menu-toggle" type="button">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+<div class="h-[1px] bg-[#eeeeee] dark:bg-slate-900 mx-8 md:mx-12"></div>
+<div class="md:hidden fixed inset-0 top-16 bg-[#1a1c1c]/40 hidden" id="mobile-overlay"></div>
+<div class="md:hidden fixed top-16 right-0 w-full max-w-sm bg-[#f9f9f9] border-l border-[#eeeeee] shadow-xl hidden" id="mobile-menu">
+<div class="px-8 py-8 flex flex-col gap-6">
+<a class="font-['Inter'] uppercase tracking-widest text-[0.6875rem] font-medium text-[#1a1c1c] hover:text-[#dc145c] transition-colors" href="#services">Услуги</a>
+<a class="font-['Inter'] uppercase tracking-widest text-[0.6875rem] font-medium text-[#1a1c1c] hover:text-[#dc145c] transition-colors" href="#cases">Кейсы</a>
+<a class="font-['Inter'] uppercase tracking-widest text-[0.6875rem] font-medium text-[#1a1c1c] hover:text-[#dc145c] transition-colors" href="#stack">Стек</a>
+<a class="font-['Inter'] uppercase tracking-widest text-[0.6875rem] font-medium text-[#1a1c1c] hover:text-[#dc145c] transition-colors" href="#contacts">Контакты</a>
+</div>
+</div>
+</nav>
+<main class="pt-16">
+<!-- Section 1: HERO -->
+<section class="relative min-h-[680px] md:min-h-[760px] lg:min-h-[819px] flex flex-col lg:flex-row items-center px-8 md:px-12 py-24 gap-16 max-w-[1440px] mx-auto bg-white overflow-hidden">
+<div class="absolute inset-0 lg:hidden">
+<img alt="Иллюстрация поддержки и заботы" class="w-full h-full object-cover object-center" src="Hands.png"/>
+<div class="absolute inset-0 bg-white/80"></div>
+</div>
+<div class="relative z-10 flex-1 space-y-8">
+<h1 class="font-headline text-[3.5rem] leading-[1.1] font-bold tracking-tight text-on-surface uppercase">
+                    Разработка цифровых систем и сайтов для НКО
+                </h1>
+<div class="space-y-4">
+<p class="text-xl leading-relaxed text-secondary max-w-xl">
+                        Разрабатываем продукты для НКО и социальных проектов с учетом отраслевых процессов и задач.
+                    </p>
+<div class="flex items-center gap-3">
+<span class="text-xl">🎁</span>
+<span class="font-label text-[0.75rem] uppercase tracking-wider font-bold text-primary">40 часов дизайна бесплатно при заказе</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-6 pt-4">
+<a class="bg-primary hover:bg-primary-container text-on-primary px-8 py-4 font-label text-[0.6875rem] uppercase tracking-widest transition-all active:scale-95 shadow-lg shadow-primary/20 inline-flex items-center justify-center" href="#contacts">
+                        Получить предложение
+                    </a>
+<a class="border border-outline-variant hover:border-primary text-on-surface px-8 py-4 font-label text-[0.6875rem] uppercase tracking-widest transition-all inline-flex items-center justify-center" href="#cases">
+                        Посмотреть кейсы
+                    </a>
+</div>
+</div>
+<div class="hidden lg:flex flex-1 w-full items-center justify-center lg:-ml-40 xl:-ml-56">
+<img alt="Иллюстрация поддержки и заботы" class="w-full max-w-[1400px] h-auto object-contain scale-125" src="Hands.png"/>
+</div>
+</section>
+<!-- Section 2: SPECIAL OFFER -->
+<section class="bg-surface-container-low py-32 px-8 md:px-12 anchor-section" id="services">
+<div class="max-w-[1440px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div>
+<label class="font-label text-[0.6875rem] uppercase tracking-[0.2em] text-primary mb-4 block">Special Offer</label>
+<h2 class="font-headline text-[2.5rem] font-bold uppercase tracking-tight max-w-3xl">Закрытая акция только для компаний благотворительного сектора</h2>
+<p class="mt-4 text-secondary uppercase font-label text-xs tracking-widest">Специальные условия для фондов и НКО</p>
+</div>
+<div class="text-right">
+<div class="inline-block bg-primary/10 text-primary px-4 py-2 font-label text-[0.6875rem] uppercase tracking-widest font-bold">
+                            ⚠️ Акция действует ограниченное время
+                        </div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-outline-variant/30">
+<!-- Price Card 1 -->
+<div class="bg-surface p-12 flex flex-col justify-between min-h-[500px]">
+<div>
+<div class="flex justify-between items-start mb-8">
+<h3 class="font-headline text-3xl font-bold uppercase tracking-tight">Сайт под ключ</h3>
+<div class="flex flex-col items-end gap-2">
+<span class="bg-primary text-on-primary px-3 py-1 font-label text-[0.6rem] uppercase tracking-widest">Popular</span>
+<span class="bg-surface-container-highest text-primary px-2 py-1 font-label text-[0.55rem] uppercase tracking-tighter font-bold border border-primary/20">🎁 40 ч дизайна в подарок</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8 mb-12 border-b border-surface-container pb-8">
+<div>
+<span class="font-label text-[0.6rem] uppercase text-outline block mb-1">Для кого</span>
+<p class="text-sm font-bold">НКО и фонды</p>
+</div>
+<div>
+<span class="font-label text-[0.6rem] uppercase text-outline block mb-1">Срок</span>
+<p class="text-sm font-bold">4–6 недель</p>
+</div>
+</div>
+<ul class="space-y-4 font-body text-sm text-secondary mb-12">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Готовый сайт фонда с донатами</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Аналитика и проектирование</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Frontend &amp; Backend разработка</li>
+</ul>
+</div>
+<div>
+<span class="font-label text-[0.6rem] uppercase text-outline block mb-2">Стоимость</span>
+<span class="font-headline text-[2rem] font-bold">от 350 000 ₽</span>
+</div>
+</div>
+<!-- Price Card 2 -->
+<div class="bg-surface p-12 flex flex-col justify-between min-h-[500px]">
+<div>
+<h3 class="font-headline text-3xl font-bold uppercase mb-8 tracking-tight">Поддержка сайта</h3>
+<div class="grid grid-cols-2 gap-8 mb-12 border-b border-surface-container pb-8">
+<div>
+<span class="font-label text-[0.6rem] uppercase text-outline block mb-1">Тип</span>
+<p class="text-sm font-bold">SLA поддержка</p>
+</div>
+<div>
+<span class="font-label text-[0.6rem] uppercase text-outline block mb-1">Объект</span>
+<p class="text-sm font-bold">Текущий сайт</p>
+</div>
+</div>
+<ul class="space-y-4 font-body text-sm text-secondary mb-12">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Развитие и доработка функций</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Оперативная техподдержка 24/7</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Работа с текущим сайтом</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Обновления безопасности</li>
+</ul>
+</div>
+<div>
+<span class="font-label text-[0.6rem] uppercase text-outline block mb-2">Стоимость</span>
+<span class="font-headline text-[2rem] font-bold">от 150 000 ₽ / мес</span>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-center">
+<a class="bg-primary hover:bg-primary-container text-on-primary px-12 py-5 font-label text-[0.75rem] uppercase tracking-widest transition-all shadow-xl shadow-primary/20 inline-flex items-center justify-center" href="#contacts">
+                        Получить предложение
+                    </a>
+</div>
+</div>
+</section>
+<!-- Section 3: PROJECTS -->
+<section class="py-32 px-8 md:px-12 max-w-[1440px] mx-auto border-b border-surface-container anchor-section" id="cases">
+<label class="font-label text-[0.6875rem] uppercase tracking-[0.2em] text-primary mb-8 block">ПРОЕКТЫ</label>
+<h2 class="font-headline text-[2.5rem] font-bold uppercase mb-20 tracking-tight">Наши проекты</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+<!-- Case 1 -->
+<div class="space-y-8">
+<div class="aspect-[16/10] bg-white border border-outline-variant/40 overflow-hidden p-2">
+<img alt="Кейс Благотворительного Фонда Хабенского" class="w-full h-full object-contain object-center" src="HabenskyCard.png"/>
+</div>
+<div class="space-y-4">
+<h3 class="font-headline text-3xl font-bold uppercase tracking-tight">Благотворительный Фонд Хабенского</h3>
+<div class="h-1 w-20 bg-primary"></div>
+</div>
+<p class="text-on-surface leading-relaxed">
+                        Полное проектирование и разработка основного портала фонда. Реализация отказоустойчивой системы приема пожертвований и интеграция с CRM-системами для НКО-сектора.
+                    </p>
+<div class="pt-4">
+<a class="border border-on-surface text-on-surface px-6 py-3 font-label text-[0.6rem] uppercase tracking-widest hover:bg-on-surface hover:text-surface transition-colors inline-block" href="https://hawkingbros.com/projects/bfkh" rel="noreferrer" target="_blank">
+                            Подробнее о кейсе
+                        </a>
+</div>
+</div>
+<!-- Case 2 -->
+<div class="space-y-8">
+<div class="aspect-[16/10] bg-white border border-outline-variant/40 overflow-hidden p-2">
+<img alt="Кейс Oncobrain" class="w-full h-full object-contain object-center" src="OncobrainCard.png"/>
+</div>
+<div class="space-y-4">
+<h3 class="font-headline text-3xl font-bold uppercase tracking-tight">Oncobrain</h3>
+<div class="h-1 w-20 bg-primary"></div>
+</div>
+<p class="text-on-surface leading-relaxed">
+                        Цифровая платформа для поддержки онкологических пациентов и врачей. Разработка интерфейса и логики взаимодействия пользователей для повышения эффективности лечения.
+                    </p>
+<div class="pt-4">
+<a class="border border-on-surface text-on-surface px-6 py-3 font-label text-[0.6rem] uppercase tracking-widest hover:bg-on-surface hover:text-surface transition-colors inline-block" href="https://oncobrain.ru/" target="_blank">
+                            Перейти на сайт
+                        </a>
+</div>
+</div>
+<!-- Case 3 -->
+<div class="space-y-8">
+<div class="aspect-[16/10] bg-white border border-outline-variant/40 overflow-hidden p-2">
+<img alt="Кейс Фонд доктора Маркова" class="w-full h-full object-contain object-center" src="MarkovCard.png"/>
+</div>
+<div class="space-y-4">
+<h3 class="font-headline text-3xl font-bold uppercase tracking-tight">Фонд доктора Маркова</h3>
+<div class="h-1 w-20 bg-primary"></div>
+</div>
+<p class="text-on-surface leading-relaxed">
+                        Карточка кейса подготовлена. После получения материалов добавим реальное изображение и уточним описание проекта.
+                    </p>
+<div class="pt-4">
+<span class="border border-outline-variant text-outline px-6 py-3 font-label text-[0.6rem] uppercase tracking-widest inline-block">
+                            Скоро
+                        </span>
+</div>
+</div>
+<!-- Case 4 -->
+<div class="space-y-8">
+<div class="aspect-[16/10] bg-white border border-outline-variant/40 overflow-hidden p-2">
+<img alt="Кейс Фонд Потанина" class="w-full h-full object-contain object-center" src="PotaninCard.png"/>
+</div>
+<div class="space-y-4">
+<h3 class="font-headline text-3xl font-bold uppercase tracking-tight">Фонд Потанина</h3>
+<div class="h-1 w-20 bg-primary"></div>
+</div>
+<p class="text-on-surface leading-relaxed">
+                        Карточка кейса подготовлена. После получения материалов добавим реальное изображение и уточним описание проекта.
+                    </p>
+<div class="pt-4">
+<span class="border border-outline-variant text-outline px-6 py-3 font-label text-[0.6rem] uppercase tracking-widest inline-block">
+                            Скоро
+                        </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: SOLUTIONS -->
+<section class="py-32 px-8 md:px-12 bg-white border-y border-surface-container">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
+<div class="md:col-span-4">
+<label class="font-label text-[0.6875rem] uppercase tracking-[0.2em] text-primary mb-6 block">Solutions</label>
+<h2 class="font-headline text-[2.5rem] font-bold uppercase mb-8 leading-tight tracking-tight">Решения для социальных проектов и НКО</h2>
+<p class="text-secondary text-sm leading-relaxed border-l-2 border-primary pl-6">
+                        Специализируемся на проектах для благотворительных организаций и понимаем их специфику. Работаем с социальными процессами и автоматизацией.
+                    </p>
+</div>
+<div class="md:col-span-8 space-y-px bg-surface-container">
+<div class="bg-white py-8 px-6 flex justify-between items-center group cursor-default hover:bg-surface-container-low transition-colors">
+<span class="font-body text-xl font-medium group-hover:text-primary transition-colors">Сайты фондов</span>
+<span class="material-symbols-outlined text-outline/30 group-hover:text-primary transition-all">arrow_forward</span>
+</div>
+<div class="bg-white py-8 px-6 flex justify-between items-center group cursor-default hover:bg-surface-container-low transition-colors">
+<span class="font-body text-xl font-medium group-hover:text-primary transition-colors">Платформы для донатов</span>
+<span class="material-symbols-outlined text-outline/30 group-hover:text-primary transition-all">arrow_forward</span>
+</div>
+<div class="bg-white py-8 px-6 flex justify-between items-center group cursor-default hover:bg-surface-container-low transition-colors">
+<span class="font-body text-xl font-medium group-hover:text-primary transition-colors">Личные кабинеты</span>
+<span class="material-symbols-outlined text-outline/30 group-hover:text-primary transition-all">arrow_forward</span>
+</div>
+<div class="bg-white py-8 px-6 flex justify-between items-center group cursor-default hover:bg-surface-container-low transition-colors">
+<span class="font-body text-xl font-medium group-hover:text-primary transition-colors">CRM системы</span>
+<span class="material-symbols-outlined text-outline/30 group-hover:text-primary transition-all">arrow_forward</span>
+</div>
+<div class="bg-white py-8 px-6 flex justify-between items-center group cursor-default hover:bg-surface-container-low transition-colors">
+<span class="font-body text-xl font-medium group-hover:text-primary transition-colors">Интеграции с платежами</span>
+<span class="material-symbols-outlined text-outline/30 group-hover:text-primary transition-all">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: TEAM EXPERTISE -->
+<section class="bg-surface py-32 px-8 md:px-12 border-b border-surface-container anchor-section" id="stack">
+<div class="max-w-[1440px] mx-auto">
+<label class="font-label text-[0.6875rem] uppercase tracking-[0.2em] text-primary mb-8 block">Team Expertise</label>
+<h2 class="font-headline text-[2.5rem] font-bold uppercase mb-16 tracking-tight">Экспертиза команды</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-outline-variant/20 border border-outline-variant/20">
+<div class="bg-white p-10 hover:bg-surface-container transition-colors group">
+<span class="material-symbols-outlined text-primary mb-6 group-hover:scale-110 transition-transform">settings_input_component</span>
+<h3 class="font-bold mb-4 uppercase text-sm tracking-wide">High-Load Системы</h3>
+<p class="text-secondary text-sm leading-relaxed">Проектируем архитектуру для выдерживания пиковых нагрузок в периоды сборов.</p>
+</div>
+<div class="bg-white p-10 hover:bg-surface-container transition-colors group">
+<span class="material-symbols-outlined text-primary mb-6 group-hover:scale-110 transition-transform">code</span>
+<h3 class="font-bold mb-4 uppercase text-sm tracking-wide">Современный Стек</h3>
+<p class="text-secondary text-sm leading-relaxed">PHP (Laravel), React, Next.js. Микросервисы и API-first подход.</p>
+</div>
+<div class="bg-white p-10 hover:bg-surface-container transition-colors group">
+<span class="material-symbols-outlined text-primary mb-6 group-hover:scale-110 transition-transform">verified_user</span>
+<h3 class="font-bold mb-4 uppercase text-sm tracking-wide">Безопасность</h3>
+<p class="text-secondary text-sm leading-relaxed">Защита персональных данных и безопасность платежных транзакций по стандартам PCI DSS.</p>
+</div>
+<div class="bg-white p-10 hover:bg-surface-container transition-colors group">
+<span class="material-symbols-outlined text-primary mb-6 group-hover:scale-110 transition-transform">neurology</span>
+<h3 class="font-bold mb-4 uppercase text-sm tracking-wide">AI-кодинг и внедрение ИИ</h3>
+<p class="text-secondary text-sm leading-relaxed">Использование AI-инструментов и автоматизации в разработке и развитии продуктов.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: HOW WE WORK -->
+<section class="bg-[#1a1c1c] text-surface py-32 px-8 md:px-12">
+<div class="max-w-[1440px] mx-auto">
+<h2 class="font-headline text-[1.75rem] font-bold uppercase mb-16 tracking-tight text-primary">Как мы работаем</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-y-12 gap-x-8">
+<div>
+<span class="font-label text-[0.6875rem] text-surface-variant opacity-50 block mb-2">STEP 01</span>
+<h4 class="font-bold uppercase text-sm mb-2">Анализ</h4>
+<p class="text-surface-variant text-xs opacity-70">Сбор требований, аудит текущих систем и формирование стратегии.</p>
+</div>
+<div>
+<span class="font-label text-[0.6875rem] text-surface-variant opacity-50 block mb-2">STEP 02</span>
+<h4 class="font-bold uppercase text-sm mb-2">Проектирование</h4>
+<p class="text-surface-variant text-xs opacity-70">Информационная архитектура и создание UX-прототипов.</p>
+</div>
+<div>
+<span class="font-label text-[0.6875rem] text-surface-variant opacity-50 block mb-2">STEP 03</span>
+<h4 class="font-bold uppercase text-sm mb-2">Разработка</h4>
+<p class="text-surface-variant text-xs opacity-70">Прозрачный процесс написания кода с регулярными демо.</p>
+</div>
+<div>
+<span class="font-label text-[0.6875rem] text-surface-variant opacity-50 block mb-2">STEP 04</span>
+<h4 class="font-bold uppercase text-sm mb-2">Тестирование</h4>
+<p class="text-surface-variant text-xs opacity-70">QA инженеры проверяют систему на соответствие стандартам.</p>
+</div>
+<div>
+<span class="font-label text-[0.6875rem] text-surface-variant opacity-50 block mb-2">STEP 05</span>
+<h4 class="font-bold uppercase text-sm mb-2">Запуск</h4>
+<p class="text-surface-variant text-xs opacity-70">Развертывание на серверах и обучение персонала заказчика.</p>
+</div>
+<div>
+<span class="font-label text-[0.6875rem] text-surface-variant opacity-50 block mb-2">STEP 06</span>
+<h4 class="font-bold uppercase text-sm mb-2">Поддержка</h4>
+<p class="text-surface-variant text-xs opacity-70">Постоянный мониторинг и развитие функционала системы.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 7: TEAM (ROLES) -->
+<section class="bg-[#1a1c1c] text-surface py-32 px-8 md:px-12 border-t border-surface-variant/10">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24">
+<div>
+<h2 class="font-headline text-[1.75rem] font-bold uppercase mb-12 tracking-tight text-primary">Команда</h2>
+<p class="text-surface-variant text-xl leading-relaxed max-w-md mb-12">
+                        Формируем выделенные команды под проект. В доступе специалисты: backend, frontend, дизайн, аналитика.
+                    </p>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-6 pb-6 border-b border-surface-variant/10">
+<span class="font-label text-primary">01</span>
+<span class="uppercase tracking-widest text-sm">Backend Инженеры</span>
+</div>
+<div class="flex items-center gap-6 pb-6 border-b border-surface-variant/10">
+<span class="font-label text-primary">02</span>
+<span class="uppercase tracking-widest text-sm">Frontend Разработчики</span>
+</div>
+<div class="flex items-center gap-6 pb-6 border-b border-surface-variant/10">
+<span class="font-label text-primary">03</span>
+<span class="uppercase tracking-widest text-sm">UX/UI Дизайнеры</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-label text-primary">04</span>
+<span class="uppercase tracking-widest text-sm">Бизнес-аналитики</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 8: FINAL CTA -->
+<section class="py-32 px-8 md:px-12 max-w-[1440px] mx-auto anchor-section" id="contacts">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-24">
+<div>
+<h2 class="font-headline text-[3.5rem] leading-[1.1] font-bold tracking-tight text-on-surface uppercase mb-8">
+                        Получите предложение по вашему проекту
+                    </h2>
+<div class="space-y-4 font-label text-[0.6875rem] uppercase text-outline">
+<p class="flex items-center gap-4"><span class="material-symbols-outlined text-primary text-sm">mail</span> hello@hawkingbros.com</p>
+<p class="flex items-center gap-4"><span class="material-symbols-outlined text-primary text-sm">call</span> +7 (900) 000-00-00</p>
+<p class="flex items-center gap-4"><span class="material-symbols-outlined text-primary text-sm">location_on</span> Москва, Пресненская наб. 12</p>
+</div>
+</div>
+<form class="space-y-12">
+<div class="relative">
+<label class="font-label text-[0.6875rem] uppercase text-outline block mb-2">Ваше имя</label>
+<input class="w-full bg-transparent border-b-2 border-secondary focus:border-primary focus:ring-0 pl-3 pr-0 py-3 transition-colors outline-none text-on-surface placeholder:text-surface-container-highest" placeholder="Иван Иванов" type="text"/>
+</div>
+<div class="relative">
+<label class="font-label text-[0.6875rem] uppercase text-outline block mb-2">Контакт (Email / Тел)</label>
+<input class="w-full bg-transparent border-b-2 border-secondary focus:border-primary focus:ring-0 pl-3 pr-0 py-3 transition-colors outline-none text-on-surface placeholder:text-surface-container-highest" placeholder="example@mail.com" type="text"/>
+</div>
+<div class="relative">
+<label class="font-label text-[0.6875rem] uppercase text-outline block mb-2">Комментарий</label>
+<textarea class="w-full bg-transparent border-b-2 border-secondary focus:border-primary focus:ring-0 pl-3 pr-0 py-3 transition-colors outline-none text-on-surface placeholder:text-surface-container-highest resize-none" placeholder="Кратко о задаче" rows="1"></textarea>
+</div>
+<button class="w-full md:w-auto bg-primary hover:bg-primary-container text-on-primary px-12 py-5 font-label text-[0.6875rem] uppercase tracking-widest transition-all" type="submit">
+                        Отправить заявку
+                    </button>
+</form>
+</div>
+</section>
+<!-- Section 9: FOOTER -->
+<footer class="bg-[#eeeeee] dark:bg-slate-900 w-full py-12 px-8 md:px-12">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 items-start">
+<div class="space-y-6">
+<div class="font-['Oswald'] text-lg font-bold text-[#1a1c1c] dark:text-slate-200 uppercase">Hawking Bros</div>
+<p class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase leading-relaxed">
+                        Engineering digital excellence for NGO and Enterprise clients.
+                    </p>
+</div>
+<div class="space-y-4">
+<label class="font-['Roboto_Mono'] text-[0.6875rem] text-[#1a1c1c] font-bold uppercase mb-4 block">Навигация</label>
+<ul class="space-y-2">
+<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Кейсы</a></li>
+<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Услуги</a></li>
+<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Стек</a></li>
+<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Вакансии</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<label class="font-['Roboto_Mono'] text-[0.6875rem] text-[#1a1c1c] font-bold uppercase mb-4 block">Документы</label>
+<ul class="space-y-2">
+<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Политика конфиденциальности</a></li>
+<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Условия использования</a></li>
+<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Cookies</a></li>
+<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Реквизиты</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<label class="font-['Roboto_Mono'] text-[0.6875rem] text-[#1a1c1c] font-bold uppercase mb-4 block">Сообщество</label>
+<ul class="space-y-2">
+<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Telegram</a></li>
+<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Habr</a></li>
+<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Behance</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-[1440px] mx-auto mt-24 pt-8 border-t border-on-surface/5 flex flex-col md:flex-row justify-between gap-4">
+<span class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase">© 2024 Hawking Bros. Engineering Digital Excellence.</span>
+<span class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase opacity-40">Built with Blueprint Aesthetic v1.1</span>
+</div>
+</footer>
+</main>
+<script>
+      (function () {
+        var menuToggle = document.getElementById("menu-toggle");
+        var mobileMenu = document.getElementById("mobile-menu");
+        var mobileOverlay = document.getElementById("mobile-overlay");
+        if (!menuToggle || !mobileMenu || !mobileOverlay) return;
+
+        function setMenuState(isOpen) {
+          mobileMenu.classList.toggle("hidden", !isOpen);
+          mobileOverlay.classList.toggle("hidden", !isOpen);
+          menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          document.body.classList.toggle("menu-open", isOpen);
+        }
+
+        menuToggle.addEventListener("click", function () {
+          var isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+          setMenuState(!isOpen);
+        });
+
+        mobileOverlay.addEventListener("click", function () {
+          setMenuState(false);
+        });
+
+        mobileMenu.querySelectorAll("a[href^='#']").forEach(function (link) {
+          link.addEventListener("click", function () {
+            setMenuState(false);
+          });
+        });
+
+        window.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            setMenuState(false);
+          }
+        });
+
+        window.addEventListener("resize", function () {
+          if (window.innerWidth >= 768) {
+            setMenuState(false);
+          }
+        });
+
+        document.querySelectorAll("a[href^='#']").forEach(function (link) {
+          link.addEventListener("click", function (event) {
+            var href = link.getAttribute("href");
+            if (!href || href === "#") return;
+            var target = document.querySelector(href);
+            if (!target) return;
+
+            event.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        });
+      })();
+    </script>
+</body></html>
