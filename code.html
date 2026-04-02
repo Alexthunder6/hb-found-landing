@@ -485,22 +485,23 @@
 <p class="flex items-start gap-4"><span class="material-symbols-outlined text-primary text-sm mt-0.5">location_on</span> г. Владимир<br/>ул. Сакко и Ванцетти, 50 (офис 13)</p>
 </div>
 </div>
-<form class="space-y-12">
+<form class="space-y-12" id="feedback-form" novalidate>
 <div class="relative">
 <label class="font-label text-[0.6875rem] uppercase text-outline block mb-2">Ваше имя</label>
-<input class="w-full bg-transparent border-b-2 border-secondary focus:border-primary focus:ring-0 pl-3 pr-0 py-3 transition-colors outline-none text-on-surface placeholder:text-surface-container-highest" placeholder="Иван Иванов" type="text"/>
+<input class="w-full bg-transparent border-b-2 border-secondary focus:border-primary focus:ring-0 pl-3 pr-0 py-3 transition-colors outline-none text-on-surface placeholder:text-surface-container-highest" name="name" placeholder="Иван Иванов" required type="text"/>
 </div>
 <div class="relative">
 <label class="font-label text-[0.6875rem] uppercase text-outline block mb-2">Контакт (Email / Тел)</label>
-<input class="w-full bg-transparent border-b-2 border-secondary focus:border-primary focus:ring-0 pl-3 pr-0 py-3 transition-colors outline-none text-on-surface placeholder:text-surface-container-highest" placeholder="example@mail.com" type="text"/>
+<input class="w-full bg-transparent border-b-2 border-secondary focus:border-primary focus:ring-0 pl-3 pr-0 py-3 transition-colors outline-none text-on-surface placeholder:text-surface-container-highest" name="contact" placeholder="example@mail.com" required type="text"/>
 </div>
 <div class="relative">
 <label class="font-label text-[0.6875rem] uppercase text-outline block mb-2">Комментарий</label>
-<textarea class="w-full bg-transparent border-b-2 border-secondary focus:border-primary focus:ring-0 pl-3 pr-0 py-3 transition-colors outline-none text-on-surface placeholder:text-surface-container-highest resize-none" placeholder="Кратко о задаче" rows="1"></textarea>
+<textarea class="w-full bg-transparent border-b-2 border-secondary focus:border-primary focus:ring-0 pl-3 pr-0 py-3 transition-colors outline-none text-on-surface placeholder:text-surface-container-highest resize-none" name="message" placeholder="Кратко о задаче" required rows="1"></textarea>
 </div>
 <button class="w-full md:w-auto bg-primary hover:bg-primary-container text-on-primary px-12 py-5 font-label text-[0.6875rem] uppercase tracking-widest transition-all" type="submit">
                         Отправить заявку
                     </button>
+<p aria-live="polite" class="font-label text-[0.6875rem] uppercase text-outline min-h-[1rem]" id="feedback-status"></p>
 </form>
 </div>
 </section>
@@ -588,6 +589,54 @@
             event.preventDefault();
             target.scrollIntoView({ behavior: "smooth", block: "start" });
           });
+        });
+
+        var feedbackForm = document.getElementById("feedback-form");
+        var feedbackStatus = document.getElementById("feedback-status");
+        if (!feedbackForm || !feedbackStatus) return;
+
+        feedbackForm.addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          var formData = new FormData(feedbackForm);
+          var payload = {
+            name: String(formData.get("name") || "").trim(),
+            contact: String(formData.get("contact") || "").trim(),
+            message: String(formData.get("message") || "").trim()
+          };
+
+          if (!payload.name || !payload.contact || !payload.message) {
+            feedbackStatus.textContent = "Заполните все поля формы.";
+            return;
+          }
+
+          var submitButton = feedbackForm.querySelector("button[type='submit']");
+          if (submitButton) submitButton.disabled = true;
+          feedbackStatus.textContent = "Отправляем заявку...";
+
+          try {
+            var response = await fetch("/api/feedback", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload)
+            });
+            var result = await response.json().catch(function () {
+              return {};
+            });
+
+            if (!response.ok || !result.ok) {
+              feedbackStatus.textContent =
+                result.error || "Не удалось отправить заявку. Попробуйте позже.";
+              return;
+            }
+
+            feedbackStatus.textContent = "Спасибо! Заявка успешно отправлена.";
+            feedbackForm.reset();
+          } catch (error) {
+            feedbackStatus.textContent = "Ошибка сети. Попробуйте позже.";
+          } finally {
+            if (submitButton) submitButton.disabled = false;
+          }
         });
       })();
     </script>
