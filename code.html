@@ -145,7 +145,8 @@
 </nav>
 <main class="pt-16">
 <!-- Section 1: HERO -->
-<section class="relative min-h-[680px] md:min-h-[760px] lg:min-h-[819px] flex flex-col lg:flex-row items-center px-8 md:px-12 py-24 gap-16 max-w-[1440px] mx-auto bg-white overflow-hidden">
+<section class="relative min-h-[680px] md:min-h-[760px] lg:min-h-[819px] bg-white overflow-hidden">
+<div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row items-center px-8 md:px-12 py-24 gap-16">
 <div class="absolute inset-0 lg:hidden">
 <img alt="Иллюстрация поддержки и заботы" class="w-full h-full object-cover object-center" src="Hands.png"/>
 <div class="absolute inset-0 bg-white/80"></div>
@@ -174,6 +175,7 @@
 </div>
 <div class="hidden lg:flex flex-1 w-full items-center justify-center lg:-ml-40 xl:-ml-56">
 <img alt="Иллюстрация поддержки и заботы" class="w-full max-w-[1400px] h-auto object-contain scale-125" src="Hands.png"/>
+</div>
 </div>
 </section>
 <!-- Section 2: SPECIAL OFFER -->
@@ -519,64 +521,76 @@
 <li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Кейсы</a></li>
 <li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Услуги</a></li>
 <li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Стек</a></li>
-<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Вакансии</a></li>
 </ul>
 </div>
 <div class="space-y-4">
 <label class="font-['Roboto_Mono'] text-[0.6875rem] text-[#1a1c1c] font-bold uppercase mb-4 block">Документы</label>
 <ul class="space-y-2">
-<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Политика конфиденциальности</a></li>
-<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Условия использования</a></li>
-<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Cookies</a></li>
+<li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="https://hawkingbros.com/sogl.pdf" rel="noopener noreferrer" target="_blank">Условия использования</a></li>
 <li><a class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase hover:underline decoration-[#dc145c] underline-offset-4" href="#">Реквизиты</a></li>
 </ul>
 </div>
 </div>
 <div class="max-w-[1440px] mx-auto mt-24 pt-8 border-t border-on-surface/5 flex flex-col md:flex-row justify-between gap-4">
-<span class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase">© 2024 Hawking Bros. Engineering Digital Excellence.</span>
+<span class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase">© 2026 Hawking Bros.</span>
 </div>
 </footer>
 </main>
+<div class="fixed bottom-4 left-4 right-4 md:left-12 md:right-12 z-[60] hidden" id="cookie-banner">
+<div class="max-w-[1440px] mx-auto bg-[#1a1c1c] text-surface border border-surface-variant/20 shadow-2xl p-5 md:p-6 flex flex-col md:flex-row gap-5 md:items-center md:justify-between">
+<p class="text-sm leading-relaxed text-surface-variant">
+          Мы используем cookies, чтобы анализировать трафик и улучшать работу сайта.
+        </p>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-8 py-3 font-label text-[0.6875rem] uppercase tracking-widest transition-all w-full md:w-auto" id="cookie-accept" type="button">
+          Принять
+        </button>
+</div>
+</div>
 <script>
       (function () {
         var menuToggle = document.getElementById("menu-toggle");
         var mobileMenu = document.getElementById("mobile-menu");
         var mobileOverlay = document.getElementById("mobile-overlay");
-        if (!menuToggle || !mobileMenu || !mobileOverlay) return;
+        var cookieBanner = document.getElementById("cookie-banner");
+        var cookieAccept = document.getElementById("cookie-accept");
+        var cookieConsentKey = "hb-cookie-consent";
 
         function setMenuState(isOpen) {
+          if (!menuToggle || !mobileMenu || !mobileOverlay) return;
           mobileMenu.classList.toggle("hidden", !isOpen);
           mobileOverlay.classList.toggle("hidden", !isOpen);
           menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
           document.body.classList.toggle("menu-open", isOpen);
         }
 
-        menuToggle.addEventListener("click", function () {
-          var isOpen = menuToggle.getAttribute("aria-expanded") === "true";
-          setMenuState(!isOpen);
-        });
+        if (menuToggle && mobileMenu && mobileOverlay) {
+          menuToggle.addEventListener("click", function () {
+            var isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+            setMenuState(!isOpen);
+          });
 
-        mobileOverlay.addEventListener("click", function () {
-          setMenuState(false);
-        });
-
-        mobileMenu.querySelectorAll("a[href^='#']").forEach(function (link) {
-          link.addEventListener("click", function () {
+          mobileOverlay.addEventListener("click", function () {
             setMenuState(false);
           });
-        });
 
-        window.addEventListener("keydown", function (event) {
-          if (event.key === "Escape") {
-            setMenuState(false);
-          }
-        });
+          mobileMenu.querySelectorAll("a[href^='#']").forEach(function (link) {
+            link.addEventListener("click", function () {
+              setMenuState(false);
+            });
+          });
 
-        window.addEventListener("resize", function () {
-          if (window.innerWidth >= 768) {
-            setMenuState(false);
-          }
-        });
+          window.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+              setMenuState(false);
+            }
+          });
+
+          window.addEventListener("resize", function () {
+            if (window.innerWidth >= 768) {
+              setMenuState(false);
+            }
+          });
+        }
 
         document.querySelectorAll("a[href^='#']").forEach(function (link) {
           link.addEventListener("click", function (event) {
@@ -589,6 +603,18 @@
             target.scrollIntoView({ behavior: "smooth", block: "start" });
           });
         });
+
+        if (cookieBanner && cookieAccept) {
+          var hasConsent = localStorage.getItem(cookieConsentKey) === "accepted";
+          if (!hasConsent) {
+            cookieBanner.classList.remove("hidden");
+          }
+
+          cookieAccept.addEventListener("click", function () {
+            localStorage.setItem(cookieConsentKey, "accepted");
+            cookieBanner.classList.add("hidden");
+          });
+        }
       })();
     </script>
 </body></html>
