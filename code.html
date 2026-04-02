@@ -116,7 +116,7 @@
 <body class="bg-surface text-on-surface font-body">
 <!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 bg-[#f9f9f9] dark:bg-slate-950">
-<div class="flex justify-between items-center h-16 px-8 md:px-12 max-w-full mx-auto">
+<div class="flex justify-between items-center h-16 px-4 sm:px-6 md:px-12 max-w-full mx-auto">
 <div class="font-['Oswald'] text-xl font-bold tracking-tighter text-[#1a1c1c] dark:text-slate-100">
                 Hawking Bros
             </div>
@@ -132,10 +132,10 @@
 </button>
 </div>
 </div>
-<div class="h-[1px] bg-[#eeeeee] dark:bg-slate-900 mx-8 md:mx-12"></div>
+<div class="h-[1px] bg-[#eeeeee] dark:bg-slate-900 mx-4 sm:mx-6 md:mx-12"></div>
 <div class="md:hidden fixed inset-0 top-16 bg-[#1a1c1c]/40 hidden" id="mobile-overlay"></div>
 <div class="md:hidden fixed top-16 right-0 w-full max-w-sm bg-[#f9f9f9] border-l border-[#eeeeee] shadow-xl hidden" id="mobile-menu">
-<div class="px-8 py-8 flex flex-col gap-6">
+<div class="px-6 py-6 sm:px-8 sm:py-8 flex flex-col gap-5 sm:gap-6">
 <a class="font-['Inter'] uppercase tracking-widest text-[0.6875rem] font-medium text-[#1a1c1c] hover:text-[#dc145c] transition-colors" href="#services">Услуги</a>
 <a class="font-['Inter'] uppercase tracking-widest text-[0.6875rem] font-medium text-[#1a1c1c] hover:text-[#dc145c] transition-colors" href="#cases">Кейсы</a>
 <a class="font-['Inter'] uppercase tracking-widest text-[0.6875rem] font-medium text-[#1a1c1c] hover:text-[#dc145c] transition-colors" href="#stack">Стек</a>
@@ -145,29 +145,29 @@
 </nav>
 <main class="pt-16">
 <!-- Section 1: HERO -->
-<section class="relative min-h-[680px] md:min-h-[760px] lg:min-h-[819px] flex flex-col lg:flex-row items-center px-8 md:px-12 py-24 gap-16 max-w-[1440px] mx-auto bg-white overflow-hidden">
+<section class="relative min-h-[560px] sm:min-h-[640px] md:min-h-[760px] lg:min-h-[819px] flex flex-col lg:flex-row items-center px-4 sm:px-6 md:px-12 py-16 sm:py-20 md:py-24 gap-10 sm:gap-12 md:gap-16 max-w-[1440px] mx-auto bg-white overflow-hidden">
 <div class="absolute inset-0 lg:hidden">
 <img alt="Иллюстрация поддержки и заботы" class="w-full h-full object-cover object-center" src="Hands.png"/>
 <div class="absolute inset-0 bg-white/80"></div>
 </div>
-<div class="relative z-10 flex-1 space-y-8">
-<h1 class="font-headline text-[3.5rem] leading-[1.1] font-bold tracking-tight text-on-surface uppercase">
+<div class="relative z-10 flex-1 space-y-6 sm:space-y-8">
+<h1 class="font-headline text-[2rem] sm:text-[2.75rem] lg:text-[3.5rem] leading-[1.1] font-bold tracking-tight text-on-surface uppercase">
                     Разработка цифровых систем и сайтов для НКО
                 </h1>
 <div class="space-y-4">
-<p class="text-xl leading-relaxed text-secondary max-w-xl">
+<p class="text-base sm:text-lg md:text-xl leading-relaxed text-secondary max-w-xl">
                         Разрабатываем продукты для НКО и социальных проектов с учетом отраслевых процессов и задач
                     </p>
-<div class="flex items-center gap-3">
+<div class="flex items-start sm:items-center gap-3">
 <span class="text-xl">🎁</span>
 <span class="font-label text-[0.75rem] uppercase tracking-wider font-bold text-primary">40 часов дизайна бесплатно при заказе</span>
 </div>
 </div>
-<div class="flex flex-wrap gap-6 pt-4">
-<a class="bg-primary hover:bg-primary-container text-on-primary px-8 py-4 font-label text-[0.6875rem] uppercase tracking-widest transition-all active:scale-95 shadow-lg shadow-primary/20 inline-flex items-center justify-center" href="#contacts">
+<div class="flex flex-wrap gap-4 sm:gap-6 pt-2 sm:pt-4">
+<a class="w-full sm:w-auto bg-primary hover:bg-primary-container text-on-primary px-8 py-4 font-label text-[0.6875rem] uppercase tracking-widest transition-all active:scale-95 shadow-lg shadow-primary/20 inline-flex items-center justify-center" href="#contacts">
                         Получить предложение
                     </a>
-<a class="border border-outline-variant hover:border-primary text-on-surface px-8 py-4 font-label text-[0.6875rem] uppercase tracking-widest transition-all inline-flex items-center justify-center" href="#cases">
+<a class="w-full sm:w-auto border border-outline-variant hover:border-primary text-on-surface px-8 py-4 font-label text-[0.6875rem] uppercase tracking-widest transition-all inline-flex items-center justify-center" href="#cases">
                         Посмотреть кейсы
                     </a>
 </div>
@@ -177,31 +177,27 @@
 </div>
 </section>
 <!-- Section 2: SPECIAL OFFER -->
-<section class="bg-surface-container-low py-32 px-8 md:px-12 anchor-section" id="services">
+<section class="bg-surface-container-low py-20 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 anchor-section" id="services">
 <div class="max-w-[1440px] mx-auto">
-<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="flex flex-col md:flex-row justify-between items-start mb-10 sm:mb-12 md:mb-16 gap-6 sm:gap-8">
 <div>
 <label class="font-label text-[0.6875rem] uppercase tracking-[0.2em] text-primary mb-4 block">Специальные условия для фондов и НКО</label>
-<h2 class="font-headline text-[2.5rem] font-bold uppercase tracking-tight max-w-3xl">Закрытая акция только для компаний благотворительного сектора</h2>
-</div>
-<div class="text-right">
-<div class="inline-block bg-primary/10 text-primary px-4 py-2 font-label text-[0.6875rem] uppercase tracking-widest font-bold">
+<h2 class="font-headline text-[1.75rem] sm:text-[2.125rem] lg:text-[2.5rem] font-bold uppercase tracking-tight max-w-3xl">Закрытая акция только для компаний благотворительного сектора</h2>
+<div class="inline-block bg-primary/10 text-primary px-4 py-2 font-label text-[0.6875rem] uppercase tracking-widest font-bold mt-5 sm:mt-6">
                             ⚠️ Акция действует ограниченное время
                         </div>
 </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-outline-variant/30">
 <!-- Price Card 1 -->
-<div class="bg-surface p-12 flex flex-col justify-between min-h-[500px]">
+<div class="bg-surface p-6 sm:p-8 md:p-12 flex flex-col justify-between min-h-0 md:min-h-[500px]">
 <div>
-<div class="flex justify-between items-start mb-8">
-<h3 class="font-headline text-3xl font-bold uppercase tracking-tight">Сайт под ключ</h3>
-<div class="flex flex-col items-end gap-2">
+<h3 class="font-headline text-2xl sm:text-3xl font-bold uppercase tracking-tight mb-5 sm:mb-6">Сайт под ключ</h3>
+<div class="flex flex-wrap items-start gap-2 mb-8">
 <span class="bg-primary text-on-primary px-3 py-1 font-label text-[0.6rem] uppercase tracking-widest">Popular</span>
 <span class="bg-surface-container-highest text-primary px-2 py-1 font-label text-[0.55rem] uppercase tracking-tighter font-bold border border-primary/20">🎁 40 ч дизайна в подарок</span>
 </div>
-</div>
-<div class="grid grid-cols-2 gap-8 mb-12 border-b border-surface-container pb-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 mb-8 sm:mb-12 border-b border-surface-container pb-6 sm:pb-8">
 <div>
 <span class="font-label text-[0.6rem] uppercase text-outline block mb-1">Для кого</span>
 <p class="text-sm font-bold">НКО и фонды</p>
@@ -219,14 +215,14 @@
 </div>
 <div>
 <span class="font-label text-[0.6rem] uppercase text-outline block mb-2">Стоимость</span>
-<span class="font-headline text-[2rem] font-bold">от 350 000 ₽</span>
+<span class="font-headline text-[1.625rem] sm:text-[2rem] font-bold">от 350 000 ₽</span>
 </div>
 </div>
 <!-- Price Card 2 -->
-<div class="bg-surface p-12 flex flex-col justify-between min-h-[500px]">
+<div class="bg-surface p-6 sm:p-8 md:p-12 flex flex-col justify-between min-h-0 md:min-h-[500px]">
 <div>
-<h3 class="font-headline text-3xl font-bold uppercase mb-8 tracking-tight">Поддержка сайта</h3>
-<div class="grid grid-cols-2 gap-8 mb-12 border-b border-surface-container pb-8">
+<h3 class="font-headline text-2xl sm:text-3xl font-bold uppercase mb-8 tracking-tight">Поддержка сайта</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 mb-8 sm:mb-12 border-b border-surface-container pb-6 sm:pb-8">
 <div>
 <span class="font-label text-[0.6rem] uppercase text-outline block mb-1">Тип</span>
 <p class="text-sm font-bold">SLA поддержка</p>
@@ -244,7 +240,7 @@
 </div>
 <div>
 <span class="font-label text-[0.6rem] uppercase text-outline block mb-2">Стоимость</span>
-<span class="font-headline text-[2rem] font-bold">от 150 000 ₽ / мес</span>
+<span class="font-headline text-[1.625rem] sm:text-[2rem] font-bold">от 150 000 ₽ / мес</span>
 </div>
 </div>
 </div>
@@ -256,9 +252,9 @@
 </div>
 </section>
 <!-- Section 3: PROJECTS -->
-<section class="py-32 px-8 md:px-12 max-w-[1440px] mx-auto border-b border-surface-container anchor-section" id="cases">
+<section class="py-20 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 max-w-[1440px] mx-auto border-b border-surface-container anchor-section" id="cases">
 <label class="font-label text-[0.6875rem] uppercase tracking-[0.2em] text-primary mb-8 block">ПРОЕКТЫ</label>
-<h2 class="font-headline text-[2.5rem] font-bold uppercase mb-20 tracking-tight">Наши проекты</h2>
+<h2 class="font-headline text-[1.75rem] sm:text-[2.125rem] lg:text-[2.5rem] font-bold uppercase mb-12 sm:mb-16 md:mb-20 tracking-tight">Наши проекты</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
 <!-- Case 1 -->
 <div class="space-y-8">
@@ -266,7 +262,7 @@
 <img alt="Кейс Благотворительного Фонда Хабенского" class="w-full h-full object-contain object-center" src="HabenskyCard.png"/>
 </div>
 <div class="space-y-4">
-<h3 class="font-headline text-3xl font-bold uppercase tracking-tight">Благотворительный Фонд Хабенского</h3>
+<h3 class="font-headline text-2xl sm:text-3xl font-bold uppercase tracking-tight">Благотворительный Фонд Хабенского</h3>
 <div class="h-1 w-20 bg-primary"></div>
 </div>
 <p class="text-on-surface leading-relaxed">
@@ -284,7 +280,7 @@
 <img alt="Кейс Oncobrain" class="w-full h-full object-contain object-center" src="OncobrainCard.png"/>
 </div>
 <div class="space-y-4">
-<h3 class="font-headline text-3xl font-bold uppercase tracking-tight">Oncobrain</h3>
+<h3 class="font-headline text-2xl sm:text-3xl font-bold uppercase tracking-tight">Oncobrain</h3>
 <div class="h-1 w-20 bg-primary"></div>
 </div>
 <p class="text-on-surface leading-relaxed">
@@ -302,7 +298,7 @@
 <img alt="Кейс Фонд доктора Маркова" class="w-full h-full object-contain object-center" src="MarkovCard.png"/>
 </div>
 <div class="space-y-4">
-<h3 class="font-headline text-3xl font-bold uppercase tracking-tight">Фонд доктора Маркова</h3>
+<h3 class="font-headline text-2xl sm:text-3xl font-bold uppercase tracking-tight">Фонд доктора Маркова</h3>
 <div class="h-1 w-20 bg-primary"></div>
 </div>
 <p class="text-on-surface leading-relaxed">
@@ -320,31 +316,31 @@
 <img alt="Кейс Фонд Потанина" class="w-full h-full object-contain object-center" src="PotaninCard.png"/>
 </div>
 <div class="space-y-4">
-<h3 class="font-headline text-3xl font-bold uppercase tracking-tight">Фонд Потанина</h3>
+<h3 class="font-headline text-2xl sm:text-3xl font-bold uppercase tracking-tight">Фонд Потанина</h3>
 <div class="h-1 w-20 bg-primary"></div>
 </div>
 <p class="text-on-surface leading-relaxed">
                         Аудит существующего сайта, проектирование пользовательского взаимодействия и разработка нового информационного ресурса.
                     </p>
 <div class="pt-4">
-<span class="border border-outline-variant text-outline px-6 py-3 font-label text-[0.6rem] uppercase tracking-widest inline-block">
+<a class="border border-on-surface text-on-surface px-6 py-3 font-label text-[0.6rem] uppercase tracking-widest hover:bg-on-surface hover:text-surface transition-colors inline-block" href="https://fondpotanin.ru/" rel="noreferrer" target="_blank">
                             Перейти на сайт
-                        </span>
+                        </a>
 </div>
 </div>
 </div>
 </section>
 <!-- Section 4: SOLUTIONS -->
-<section class="py-32 px-8 md:px-12 bg-white border-y border-surface-container">
-<div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
-<div class="md:col-span-4">
+<section class="py-20 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 bg-white border-y border-surface-container">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+<div class="lg:col-span-4">
 <label class="font-label text-[0.6875rem] uppercase tracking-[0.2em] text-primary mb-6 block">Продукты</label>
-<h2 class="font-headline text-[2.5rem] font-bold uppercase mb-8 leading-tight tracking-tight">Решения для социальных проектов и НКО</h2>
+<h2 class="font-headline text-[1.75rem] sm:text-[2.125rem] lg:text-[2.5rem] font-bold uppercase mb-8 leading-tight tracking-tight">Решения для социальных проектов и НКО</h2>
 <p class="text-secondary text-sm leading-relaxed border-l-2 border-primary pl-6">
                         Специализируемся на проектах для благотворительных организаций и понимаем их специфику
                     </p>
 </div>
-<div class="md:col-span-8">
+<div class="lg:col-span-8">
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 <div class="bg-white border border-outline-variant/40 p-8">
 <h3 class="font-headline text-2xl font-bold uppercase tracking-tight">Сайты фондов</h3>
@@ -376,9 +372,9 @@
 </div>
 </section>
 <!-- Section 5: TEAM EXPERTISE -->
-<section class="bg-surface py-32 px-8 md:px-12 border-b border-surface-container anchor-section" id="stack">
+<section class="bg-surface py-20 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 border-b border-surface-container anchor-section" id="stack">
 <div class="max-w-[1440px] mx-auto">
-<h2 class="font-headline text-[2.5rem] font-bold uppercase mb-16 tracking-tight">Экспертиза команды</h2>
+<h2 class="font-headline text-[1.75rem] sm:text-[2.125rem] lg:text-[2.5rem] font-bold uppercase mb-12 sm:mb-16 tracking-tight">Экспертиза команды</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-outline-variant/20 border border-outline-variant/20">
 <div class="bg-white p-10 hover:bg-surface-container transition-colors group">
 <span class="material-symbols-outlined text-primary mb-6 group-hover:scale-110 transition-transform">settings_input_component</span>
@@ -404,7 +400,7 @@
 </div>
 </section>
 <!-- Section 6: HOW WE WORK -->
-<section class="bg-[#1a1c1c] text-surface py-32 px-8 md:px-12">
+<section class="bg-[#1a1c1c] text-surface py-20 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12">
 <div class="max-w-[1440px] mx-auto">
 <h2 class="font-headline text-[1.75rem] font-bold uppercase mb-16 tracking-tight text-primary">Как мы работаем</h2>
 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-y-12 gap-x-8">
@@ -442,11 +438,11 @@
 </div>
 </section>
 <!-- Section 7: TEAM (ROLES) -->
-<section class="bg-[#1a1c1c] text-surface py-32 px-8 md:px-12 border-t border-surface-variant/10">
-<div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24">
+<section class="bg-[#1a1c1c] text-surface py-20 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 border-t border-surface-variant/10">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24">
 <div>
 <h2 class="font-headline text-[1.75rem] font-bold uppercase mb-12 tracking-tight text-primary">Команда</h2>
-<p class="text-surface-variant text-xl leading-relaxed max-w-md mb-12">
+<p class="text-surface-variant text-base sm:text-lg md:text-xl leading-relaxed max-w-md mb-10 sm:mb-12">
                         Формируем выделенные команды под проект. В доступе специалисты: backend, frontend, дизайн, аналитика.
                     </p>
 </div>
@@ -471,10 +467,10 @@
 </div>
 </section>
 <!-- Section 8: FINAL CTA -->
-<section class="py-32 px-8 md:px-12 max-w-[1440px] mx-auto anchor-section" id="contacts">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-24">
+<section class="py-20 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 max-w-[1440px] mx-auto anchor-section" id="contacts">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 sm:gap-16 md:gap-24">
 <div>
-<h2 class="font-headline text-[3.5rem] leading-[1.1] font-bold tracking-tight text-on-surface uppercase mb-8">
+<h2 class="font-headline text-[2rem] sm:text-[2.75rem] lg:text-[3.5rem] leading-[1.1] font-bold tracking-tight text-on-surface uppercase mb-8">
                         Получите предложение по вашему проекту
                     </h2>
 <div class="space-y-4 font-label text-[0.6875rem] uppercase text-outline">
@@ -505,7 +501,7 @@
 </div>
 </section>
 <!-- Section 9: FOOTER -->
-<footer class="bg-[#eeeeee] dark:bg-slate-900 w-full py-12 px-8 md:px-12">
+<footer class="bg-[#eeeeee] dark:bg-slate-900 w-full py-12 px-4 sm:px-6 md:px-12">
 <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 items-start">
 <div class="space-y-6">
 <div class="font-['Oswald'] text-lg font-bold text-[#1a1c1c] dark:text-slate-200 uppercase">Hawking Bros</div>
@@ -532,7 +528,7 @@
 </ul>
 </div>
 </div>
-<div class="max-w-[1440px] mx-auto mt-24 pt-8 border-t border-on-surface/5 flex flex-col md:flex-row justify-between gap-4">
+<div class="max-w-[1440px] mx-auto mt-12 sm:mt-16 md:mt-24 pt-8 border-t border-on-surface/5 flex flex-col md:flex-row justify-between gap-4">
 <span class="font-['Roboto_Mono'] text-[0.6875rem] text-[#5e5e5e] uppercase">© 2024 Hawking Bros. Engineering Digital Excellence.</span>
 </div>
 </footer>
